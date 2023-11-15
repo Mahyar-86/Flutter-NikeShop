@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nike_shop/components/bottom_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,8 +9,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  void navigationBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      bottomNavigationBar: MyBottomNavBar(
+        onTabChange: (index) => navigationBottomBar(index),
+      ),
+    );
   }
 }
