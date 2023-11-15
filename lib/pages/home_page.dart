@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nike_shop/components/bottom_nav_bar.dart';
+import 'package:nike_shop/pages/cart_page.dart';
+import 'package:nike_shop/pages/shop_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +12,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+
+  List<Widget> _pages = [
+    const ShopPage(),
+    const CartPage(),
+  ];
+
   void navigationBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
@@ -23,6 +31,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: MyBottomNavBar(
         onTabChange: (index) => navigationBottomBar(index),
       ),
+      body: _pages[_selectedIndex],
     );
   }
 }
