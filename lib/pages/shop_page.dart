@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nike_shop/components/shoe_tile.dart';
+import 'package:nike_shop/models/shoe.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
@@ -56,13 +58,27 @@ class ShopPage extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         Expanded(
-          child: ListView.builder(itemBuilder: (context, index) {
-            return null;
-          }),
+          child: ListView.builder(
+            itemCount: 4,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              Shoe shoe = Shoe(
+                name: "Air Jordan",
+                price: "240",
+                imagePath: "lib/images/S1.png",
+                description: "cool shoe",
+              );
+              return ShoeTile(shoe: shoe);
+            },
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0),
+          child: Divider(
+            color: Colors.transparent,
+          ),
         ),
       ],
     );
