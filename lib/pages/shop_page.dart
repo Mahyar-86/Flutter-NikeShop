@@ -4,8 +4,24 @@ import 'package:nike_shop/models/cart.dart';
 import 'package:nike_shop/models/shoe.dart';
 import 'package:provider/provider.dart';
 
-class ShopPage extends StatelessWidget {
+class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
+
+  @override
+  State<ShopPage> createState() => _ShopPageState();
+}
+
+class _ShopPageState extends State<ShopPage> {
+  void addShoeToCart(Shoe shoe) {
+    Provider.of<Cart>(context, listen: false).addItemToCart(shoe);
+    showDialog(
+      context: context,
+      builder: (context) => const AlertDialog(
+        title: Text("Successfully added to cart!"),
+        content: Text("Check your cart"),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +32,8 @@ class ShopPage extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             margin: const EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
-                color: Colors.grey[200], borderRadius: BorderRadius.circular(8)),
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(8)),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -55,8 +72,8 @@ class ShopPage extends StatelessWidget {
                 ),
                 Text(
                   "See all",
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.blue),
                 ),
               ],
             ),
@@ -68,7 +85,10 @@ class ShopPage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 Shoe shoe = value.getShoeList()[index];
-                return ShoeTile(shoe: shoe);
+                return ShoeTile(
+                  shoe: shoe,
+                  onTap: () => addShoeToCart(shoe),
+                );
               },
             ),
           ),
