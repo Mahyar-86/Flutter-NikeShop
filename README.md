@@ -6,6 +6,6 @@ Do you want to learn create like this? [check it out](https://youtu.be/HQ_ytw58t
 
 ## ScreenShots
 
-![1](screenshots\1.png)
+![1](/screenshots/1.png)
 
-![2](screenshots\2.png)
+![2](/screenshots/2.png)
