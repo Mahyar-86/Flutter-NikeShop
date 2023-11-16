@@ -15,6 +15,7 @@ class CartPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //cart page title
             const Text(
               "My Cart",
               style: TextStyle(
@@ -22,9 +23,12 @@ class CartPage extends StatelessWidget {
                 fontSize: 24,
               ),
             ),
+            //create an empty space
             const SizedBox(height: 10.0),
+            //fill the empty space with cart items
             Expanded(
               child: ListView.builder(
+                //get cart items value
                 itemCount: value.getUserCart().length,
                 itemBuilder: (context, index) {
                   Shoe individualShoe = value.getUserCart()[index];

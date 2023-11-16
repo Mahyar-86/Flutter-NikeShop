@@ -17,16 +17,19 @@ class _CartItemState extends State<CartItem> {
   }
   @override
   Widget build(BuildContext context) {
+    //create cart items
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(8.0),
       ),
       margin: const EdgeInsets.only(bottom: 10.0),
+      //show the shoe properties
       child: ListTile(
         leading: Image.asset(widget.shoe.imagePath),
         title: Text(widget.shoe.name),
         subtitle: Text("\$${widget.shoe.price}"),
+        //create delete item button
         trailing: IconButton(
           icon: const Icon(Icons.delete),
           onPressed: () => removeItemFromCart(),

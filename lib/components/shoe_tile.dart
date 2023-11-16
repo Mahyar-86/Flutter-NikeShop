@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nike_shop/models/shoe.dart';
 
+//create tiles of items
 class ShoeTile extends StatelessWidget {
   Shoe shoe;
   void Function()? onTap;
@@ -8,6 +9,7 @@ class ShoeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //create a container to show shoe properties
     return Container(
       margin: const EdgeInsets.only(left: 25.0),
       width: 280,
@@ -33,6 +35,7 @@ class ShoeTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
+                  //put item properties
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -42,6 +45,7 @@ class ShoeTile extends StatelessWidget {
                         fontSize: 20.0,
                       ),
                     ),
+                    //create an empty space
                     const SizedBox(height: 5.0),
                     Text(
                       "\$${shoe.price}",
@@ -51,6 +55,7 @@ class ShoeTile extends StatelessWidget {
                     ),
                   ],
                 ),
+                //create a button to add item in user cart
                 GestureDetector(
                   onTap: onTap,
                   child: Container(

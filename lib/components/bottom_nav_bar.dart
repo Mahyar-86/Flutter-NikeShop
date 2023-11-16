@@ -9,6 +9,7 @@ class MyBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
+      //create a google navigation bar
       child: GNav(
         gap: 8,
         color: Colors.grey[400],
@@ -17,7 +18,9 @@ class MyBottomNavBar extends StatelessWidget {
         tabBackgroundColor: Colors.grey.shade100,
         mainAxisAlignment: MainAxisAlignment.center,
         tabBorderRadius: 16,
+        //if onTabChange is not null call onTabChange to change page
         onTabChange: (value) => onTabChange!(value),
+        //create tabs
         tabs: const [
           GButton(
             icon: Icons.home,

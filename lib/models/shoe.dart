@@ -1,3 +1,4 @@
+//make a class to define shoe models
 class Shoe {
   final String name;
   final String price;

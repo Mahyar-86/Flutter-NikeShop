@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nike_shop/models/shoe.dart';
 
 class Cart extends ChangeNotifier {
+  //list of shoe models
   List<Shoe> shoeShop = [
     Shoe(
         name: "Air Jordan",
@@ -29,21 +30,26 @@ class Cart extends ChangeNotifier {
             "A combination of breathable and durable materials stands ready for the rigors of your day."),
   ];
 
+  //user cart list
   List<Shoe> userCart = [];
 
+  //get list of shoes function
   List<Shoe> getShoeList() {
     return shoeShop;
   }
 
+  //get user cart function
   List<Shoe> getUserCart() {
     return userCart;
   }
-
+  
+  //add item to user cart function
   void addItemToCart(Shoe shoe) {
     userCart.add(shoe);
     notifyListeners();
   }
-
+  
+  //remove item from user cart function
   void removeItemFromCart(Shoe shoe) {
     userCart.remove(shoe);
     notifyListeners();

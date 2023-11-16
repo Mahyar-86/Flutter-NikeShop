@@ -11,13 +11,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //selected page
   int _selectedIndex = 0;
 
+  // app pages
   final List<Widget> _pages = [
     const ShopPage(),
     const CartPage(),
   ];
-
+  //change page when bottom bar is clicked
   void navigationBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
@@ -31,22 +33,26 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: MyBottomNavBar(
         onTabChange: (index) => navigationBottomBar(index),
       ),
+      // create an appbar and make it transparent with no shadow
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Builder(builder: (context) {
           return Padding(
+            //create drawer button
             padding: const EdgeInsets.only(left: 12.0),
             child: IconButton(
               icon: const Icon(
                 Icons.menu,
                 color: Colors.black,
               ),
+              //when drawer button is pressed open drawer
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),
           );
         }),
       ),
+      //create a drawer
       drawer: Drawer(
         backgroundColor: Colors.grey[900],
         child: Column(
@@ -54,6 +60,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Column(
               children: [
+                //create drawer header
                 DrawerHeader(
                   child: Padding(
                     padding: const EdgeInsets.all(40.0),
@@ -70,6 +77,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.grey[800],
                   ),
                 ),
+                //create drawer home and about button
                 const Padding(
                   padding: EdgeInsets.only(left: 25.0),
                   child: ListTile(
@@ -98,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            //create drawer logout button
             const Padding(
               padding: EdgeInsets.only(left: 25.0, bottom: 25.0),
               child: ListTile(
@@ -114,6 +123,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      //set page index
       body: _pages[_selectedIndex],
     );
   }

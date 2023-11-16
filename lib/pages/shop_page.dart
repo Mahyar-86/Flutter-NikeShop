@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:nike_shop/components/shoe_tile.dart';
 import 'package:nike_shop/models/cart.dart';
@@ -12,10 +14,12 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  //add item to cart function
   void addShoeToCart(Shoe shoe) {
     Provider.of<Cart>(context, listen: false).addItemToCart(shoe);
     showDialog(
       context: context,
+      //when add to cart button is pressed show alert dialog
       builder: (context) => const AlertDialog(
         title: Text("Successfully added to cart!"),
         content: Text("Check your cart"),
@@ -28,6 +32,7 @@ class _ShopPageState extends State<ShopPage> {
     return Consumer<Cart>(
       builder: (context, value, child) => Column(
         children: [
+          //create search bar
           Container(
             padding: const EdgeInsets.all(12),
             margin: const EdgeInsets.symmetric(horizontal: 25),
@@ -48,6 +53,7 @@ class _ShopPageState extends State<ShopPage> {
               ],
             ),
           ),
+          //put everyone flies... text
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 25),
             child: Text(
@@ -57,6 +63,7 @@ class _ShopPageState extends State<ShopPage> {
               ),
             ),
           ),
+          //create hot picks and see all texts
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 25.0),
             child: Row(
@@ -78,10 +85,12 @@ class _ShopPageState extends State<ShopPage> {
               ],
             ),
           ),
+          //create an empty space
           const SizedBox(height: 10),
+          //fill the empty space with shoe tiles
           Expanded(
             child: ListView.builder(
-              itemCount: 4,
+              itemCount: value.getShoeList().length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 Shoe shoe = value.getShoeList()[index];
@@ -92,6 +101,7 @@ class _ShopPageState extends State<ShopPage> {
               },
             ),
           ),
+          //create an empty space in bottom
           const Padding(
             padding: EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0),
             child: Divider(
